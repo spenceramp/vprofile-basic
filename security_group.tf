@@ -30,16 +30,16 @@ resource "aws_security_group" "tomcat_sg" {
 
   ingress {
     cidr_blocks = ["${trimspace(data.http.my_ip.response_body)}/32"]
-    from_port       = 22
-    protocol        = "tcp"
-    to_port         = 22
+    from_port   = 22
+    protocol    = "tcp"
+    to_port     = 22
   }
 
   ingress {
     cidr_blocks = ["${trimspace(data.http.my_ip.response_body)}/32"]
-    from_port       = 8080
-    protocol        = "tcp"
-    to_port         = 8080
+    from_port   = 8080
+    protocol    = "tcp"
+    to_port     = 8080
   }
 
   tags = {
@@ -79,18 +79,18 @@ resource "aws_security_group" "backend" {
   }
 
   ingress {
-    self            = true
-    from_port       = 0
-    protocol        = "tcp"
-    to_port         = 0
-    description     = "Allows all instances within this SG to communicate"
+    self        = true
+    from_port   = 0
+    protocol    = "tcp"
+    to_port     = 0
+    description = "Allows all instances within this SG to communicate"
   }
 
   ingress {
     cidr_blocks = ["${trimspace(data.http.my_ip.response_body)}/32"]
-    from_port       = 22
-    protocol        = "tcp"
-    to_port         = 22
+    from_port   = 22
+    protocol    = "tcp"
+    to_port     = 22
   }
 
   tags = {
